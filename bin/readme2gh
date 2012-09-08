@@ -8,10 +8,8 @@ ioscript({
     inputExtension: 'tpl',
     outputExtension: 'html',
     transform: function(data) {
-        console.log(data);
+        var html = 'html goes here'; // TODO: fetch this
 
-        // TODO: inject readme data to input now
-
-        return data;
+        return data.replace(/\{\{ content \}\}/, html);
     }
 });
