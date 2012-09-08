@@ -6,8 +6,7 @@
 
     "dependencies": {
         "marked": "== 0.2.5",
-        "ioscript.js": "== 0.2.0",
-        "git-wrapper": "== 0.1.0"
+        "ioscript.js": "== 0.2.0"
     },
 
     "main": "./bin/readme2gh",

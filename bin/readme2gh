@@ -1,15 +1,37 @@
 #!/usr/bin/env node
 var ioscript = require('ioscript.js');
+var https = require('https');
+var exec = require('child_process').exec;
 var marked = require('marked');
 
-ioscript({
-    version: '0.1.0',
-    args: process.argv,
-    inputExtension: 'tpl',
-    outputExtension: 'html',
-    transform: function(data) {
-        var html = 'html goes here'; // TODO: fetch this
+exec('git config --get remote.origin.url', function(err, d) {
+    if(err) return console.log('Make sure your repo points to a GitHub remote!');
+    var path = '/' + d.split(':')[1].split('.')[0] + '/master/README.md';
 
-        return data.replace(/\{\{ content \}\}/, html);
-    }
+    var req = https.request({
+        host: 'raw.github.com',
+        path: path,
+        method: 'GET'
+    }, function(res) {
+        res.setEncoding('utf8');
+        res.on('data', main);
+    });
+
+    req.on('error', function(e) {
+        console.log('Problem fetching README.md from GitHub: ' + e.message);
+    });
+
+    req.end();
 });
+
+function main(readme) {
+    ioscript({
+        version: '0.1.0',
+        args: process.argv,
+        inputExtension: 'tpl',
+        outputExtension: 'html',
+        transform: function(data) {
+            return data.replace(/\{\{ content \}\}/, marked(readme));
+        }
+    });
+}

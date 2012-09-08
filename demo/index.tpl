@@ -3,6 +3,6 @@
   <title>Demo page</title>
 </head>
 <body>
-  {{ content }}
+{{ content }}
 </body>
 </html>
