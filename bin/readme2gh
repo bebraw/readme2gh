@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+var ioscript = require('ioscript.js');
+var marked = require('marked');
+
+ioscript({
+    version: '0.1.0',
+    args: process.argv,
+    inputExtension: 'tpl',
+    outputExtension: 'html',
+    transform: function(data) {
+        console.log(data);
+
+        // TODO: inject readme data to input now
+
+        return data;
+    }
+});

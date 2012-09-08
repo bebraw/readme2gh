@@ -1,0 +1,33 @@
+{
+    "name": "readme2gh",
+    "description": "Github README.md to index.html converter",
+    "author": "Juho Vepsalainen <bebraw@gmail.com>",
+    "version": "0.1.0",
+
+    "dependencies": {
+        "marked": "== 0.2.5",
+        "ioscript.js": "== 0.2.0",
+        "git-wrapper": "== 0.1.0"
+    },
+
+    "main": "./bin/readme2gh",
+    "bin": "./bin/readme2gh",
+
+    "repository": {
+        "type": "git",
+        "url": "https://bebraw@github.com/bebraw/readme2gh.git"
+    },
+
+    "homepage": "https://github.com/bebraw/readme2gh",
+
+    "bugs": {
+        "url": "https://github.com/bebraw/readme2gh/issues"
+    },
+
+    "keywords": ["markdown", "github", "html"],
+
+    "licenses": [{
+        "type": "MIT",
+        "url": "https://github.com/bebraw/readme2gh/blob/master/LICENSE"
+    }]
+}
